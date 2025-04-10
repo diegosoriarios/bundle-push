@@ -64,7 +64,7 @@ app.get('/update', (req, res) => {
     return res.status(404).json({ error: 'Platform not supported' });
   }
 
-  const shouldUpdate = latestBundle.version !== currentVersion;
+  const shouldUpdate = latestBundle.version > currentVersion;
 
   res.json({
     shouldUpdate,
