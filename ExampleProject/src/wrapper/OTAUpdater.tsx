@@ -3,6 +3,7 @@ import { View, ActivityIndicator, Platform, StyleSheet } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import axios from 'axios';
+import { restartApp } from '../helper/restartHelper';
 
 type Props = {
   children: React.ReactNode;
@@ -45,9 +46,10 @@ export const OTAUpdater: React.FC<Props> = ({ children }) => {
       try {
         const currentVersion = DeviceInfo.getVersion();
         const data = await checkForUpdate(currentVersion);
-  
+
         if (data) {
           downloadBundle(data.url);
+          restartApp();
         }
       } catch (e) {}
       finally {
