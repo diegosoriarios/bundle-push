@@ -42,13 +42,17 @@ export const OTAUpdater: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     async function initialize() {
       setLoading(true);
-      const currentVersion = DeviceInfo.getVersion();
-      const data = await checkForUpdate(currentVersion);
-
-      if (data) {
-        downloadBundle(data.url);
+      try {
+        const currentVersion = DeviceInfo.getVersion();
+        const data = await checkForUpdate(currentVersion);
+  
+        if (data) {
+          downloadBundle(data.url);
+        }
+      } catch (e) {}
+      finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
 
     initialize();
