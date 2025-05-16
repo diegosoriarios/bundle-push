@@ -5534,6 +5534,11 @@ react-is@^19.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.1.0.tgz#805bce321546b7e14c084989c77022351bbdd11b"
   integrity sha512-Oe56aUPnkHyyDxxkvqtd7KkdQP5uIUfHxd5XTb3wE9d/kRnZLmKbDB0GWk919tdQ+mxxPtG6EAs6RMT6i1qtHg==
 
+react-native-bundle-push@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-bundle-push/-/react-native-bundle-push-1.0.1.tgz#914b046853f2ad728ca8d218014785590fe05d63"
+  integrity sha512-u3xG7Cb8PCuOvG82RW/7B35SwdvtVL/CoU1/NtpOCo5fOHE+XR95B3w17HeI9MpgXZfFjtFWt/QakFkTuDomPg==
+
 react-native-device-info@^14.0.4:
   version "14.0.4"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-14.0.4.tgz#56b24ace9ff29a66bdfc667209086421ed6cfdce"

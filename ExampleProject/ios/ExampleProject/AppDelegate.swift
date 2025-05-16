@@ -17,15 +17,15 @@ class AppDelegate: RCTAppDelegate {
     
     let rootView = RCTRootView(
         bundleURL: jsCodeLocation,
-        moduleName: self.moduleName,
+        moduleName: "ExampleProject",
         initialProperties: nil
     )
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
     let rootViewController = UIViewController()
     rootViewController.view = rootView
-    self.window?.rootViewController = rootViewController
-    self.window?.makeKeyAndVisible()
+    self.window.rootViewController = rootViewController
+    self.window.makeKeyAndVisible()
 
     return true
 
@@ -33,7 +33,18 @@ class AppDelegate: RCTAppDelegate {
   }
 
   override func sourceURL(for bridge: RCTBridge) -> URL? {
-    self.bundleURL()
+    #if DEBUG
+      return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: "jsbundle")
+    #else
+      let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+      let otaBundleURL = documentDirectory.appendingPathComponent("index.ios.bundle")
+
+      if FileManager.default.fileExists(atPath: otaBundleURL.path) {
+        return otaBundleURL
+      } else {
+        return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+      }
+    #endif
   }
 
   override func bundleURL() -> URL? {
@@ -55,11 +66,11 @@ class AppDelegate: RCTAppDelegate {
             return bundlePath
         } else {
             print("[OTA] Loading default bundle from app package.")
-            return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)
+          return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: "jsbundle")!
         }
     }
     
     print("[OTA] Fallback: Loading default bundle (documents dir not found).")
-    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)
+    return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackExtension: "jsbundle")!
 }
 }
