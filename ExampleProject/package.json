@@ -16,6 +16,7 @@
     "axios": "^1.8.4",
     "react": "19.0.0",
     "react-native": "0.78.2",
+    "react-native-bundle-push": "^1.0.1",
     "react-native-device-info": "^14.0.4",
     "react-native-fs": "^2.20.0"
   },
