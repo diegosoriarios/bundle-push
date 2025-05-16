@@ -1,3 +1,4 @@
 */node_modulesnode_modules/
 */.DS_Store
-*/ios/Pods
+*/ios/Pods/
+*/ios/build/
